@@ -2,12 +2,12 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	3.40
+Version:	3.50
 Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
+# Source0-md5:	258037070b2203c4feb858c6d9f18446
 Source0:	http://phplens.com/lens/dl/%{name}%(echo %{version} | tr -d .).tgz
-# Source0-md5:	263ab15fe293b12c5caf60493b9b031d
 URL:		http://php.weblogs.com/ADOdb
 Requires:	php
 Requires:	php-pear
