@@ -1,7 +1,7 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	3.30
+Version:	3.31
 Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
