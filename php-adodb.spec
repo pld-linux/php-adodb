@@ -41,13 +41,10 @@ install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers
 install *.php $RPM_BUILD_ROOT%{_phpsharedir}/%{name}
 install drivers/* $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers
 
-#license.txt readme.txt readme.htm tips_portable_sql.htm tute.htm
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc license.txt readme.txt readme.htm tips_portable_sql.htm tute.htm
-#%doc *.gz
 %{_phpsharedir}/%{name}
