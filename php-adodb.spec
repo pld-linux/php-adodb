@@ -7,6 +7,7 @@ Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
 Source0:	http://phplens.com/lens/dl/%{name}%{ver}.tgz
+# Source0-md5:	19ec05b99905ca09650cb30ed5ecfcf6
 URL:		http://php.weblogs.com/ADODB/
 Requires:	php-common
 BuildArch:	noarch
