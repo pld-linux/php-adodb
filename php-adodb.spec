@@ -1,11 +1,10 @@
-%define ver	1.20
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	1.20
+Version:	2.20
 Release:	1
 Group:		Libraries
-License:	LGPL
+License:	dual licensed using BSD-Style and LGPL
 Source0:	http://phplens.com/lens/dl/%{name}%(echo %{version} | sed -e 's#\.##').tgz
 URL:		http://php.weblogs.com/ADODB/
 Requires:	php-common
@@ -37,16 +36,18 @@ Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}
+install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers
 
-install adodb*	$RPM_BUILD_ROOT%{_phpsharedir}/%{name}
+install *.php $RPM_BUILD_ROOT%{_phpsharedir}/%{name}
+install drivers/* $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers
 
-gzip -9nf b* c* l* r* s* t* v*
+#license.txt readme.txt readme.htm tips_portable_sql.htm tute.htm
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc license.txt readme.txt readme.htm tips_portable_sql.htm tute.htm
+#%doc *.gz
 %{_phpsharedir}/%{name}
