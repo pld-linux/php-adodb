@@ -39,7 +39,7 @@ Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/drivers 
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/drivers
 install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/datadict
 install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/tests
 
