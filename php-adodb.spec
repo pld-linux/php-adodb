@@ -1,20 +1,20 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	3.92
+Version:	4.04
 %define ver	%(echo %{version} | tr -d .)
 Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
+#Source0Download: http://php.weblogs.com/ADOdb#downloads
 Source0:	http://phplens.com/lens/dl/%{name}%{ver}.tgz
-# Source0-md5:	2d85362664bf561017be3b61407af9bf
+# Source0-md5:	82a8a7239a681438b446767f14e40731
 URL:		http://php.weblogs.com/ADOdb
-Requires:	php
-Requires:	php-pear
-BuildRequires:	rpm-php-pearprov
+Requires:	php-pear >= 4.0.5
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-%define		php_pear_dir	%{_datadir}/pear/
+
+%define		php_pear_dir	%{_datadir}/pear
 
 %description
 PHP's database access functions are not standardised. This creates a
