@@ -1,3 +1,4 @@
+%include	/usr/lib/rpm/macros.php
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
@@ -6,13 +7,12 @@ Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
 Source0:	http://phplens.com/lens/dl/%{name}%(echo %{version} | sed -e 's#\.##').tgz
-URL:		http://php.weblogs.com/ADODB/
+URL:		http://php.weblogs.com/ADOdb
 Requires:	php
-Requires:	php-common
+Requires:	php-pear
+BuildRequires:	rpm-php-pearprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_phpsharedir	%{_datadir}/php
 
 %description
 PHP's database access functions are not standardised. This creates a
@@ -37,14 +37,14 @@ Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers 
-install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/datadict
-install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/tests
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/drivers 
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/datadict
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/tests
 
-install *.php      $RPM_BUILD_ROOT%{_phpsharedir}/%{name}
-install drivers/*  $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers
-install datadict/* $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/datadict
-install tests/*    $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/tests
+install *.php      $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
+install drivers/*  $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/drivers
+install datadict/* $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/datadict
+install tests/*    $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/tests
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -54,4 +54,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc license.txt readme.txt
 %doc old-changelog.htm readme.htm tips_portable_sql.htm tute.htm
 %doc cute_icons_for_site
-%{_phpsharedir}/%{name}
+%{php_pear_dir}/%{name}
