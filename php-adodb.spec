@@ -1,12 +1,13 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	2.20
+Version:	3.30
 Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
 Source0:	http://phplens.com/lens/dl/%{name}%(echo %{version} | sed -e 's#\.##').tgz
 URL:		http://php.weblogs.com/ADODB/
+Requires:	php
 Requires:	php-common
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -36,15 +37,21 @@ Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers
+install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers 
+install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/datadict
+install -d $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/tests
 
-install *.php $RPM_BUILD_ROOT%{_phpsharedir}/%{name}
-install drivers/* $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers
+install *.php      $RPM_BUILD_ROOT%{_phpsharedir}/%{name}
+install drivers/*  $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/drivers
+install datadict/* $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/datadict
+install tests/*    $RPM_BUILD_ROOT%{_phpsharedir}/%{name}/tests
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc license.txt readme.txt readme.htm tips_portable_sql.htm tute.htm
+%doc license.txt readme.txt
+%doc old-changelog.htm readme.htm tips_portable_sql.htm tute.htm
+%doc cute_icons_for_site
 %{_phpsharedir}/%{name}
