@@ -15,6 +15,7 @@ Requires:	php-pear
 BuildRequires:	rpm-php-pearprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
 %define		_noautoreq	"pear(ADORecordSet_ibase) pear(ADORecordSet_empty) pear(ADOConnection) pear(ADOFetchObj) pear(ADOFieldObject) pear(ADORecordSet) pear(ADORecordSet_array) pear(ADORecordSet_empty)pear(ADORecordSet_ibase) pear(ADORecordset) pear(COM) pear(VARIANT)"
 
 %description
