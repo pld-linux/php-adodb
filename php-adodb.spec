@@ -6,7 +6,7 @@ Version:	3.40
 Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
-Source0:	http://phplens.com/lens/dl/%{name}%(echo %{version} | sed -e 's#\.##').tgz
+Source0:	http://phplens.com/lens/dl/%{name}%(echo %{version} | tr -d .).tgz
 # Source0-md5:	263ab15fe293b12c5caf60493b9b031d
 URL:		http://php.weblogs.com/ADOdb
 Requires:	php
