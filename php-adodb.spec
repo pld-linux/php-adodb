@@ -1,4 +1,4 @@
-#%include	/usr/lib/rpm/macros.php
+%include	/usr/lib/rpm/macros.php
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
@@ -13,8 +13,8 @@ Requires:	php-pear
 BuildRequires:	rpm-php-pearprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 %define		php_pear_dir	/usr/share/pear
+%define		_noautoreq	"pear(ADORecordSet_ibase) pear(ADORecordSet_empty) pear(ADOConnection) pear(ADOFetchObj) pear(ADOFieldObject) pear(ADORecordSet) pear(ADORecordSet_array) pear(ADORecordSet_empty)pear(ADORecordSet_ibase) pear(ADORecordset) pear(COM) pear(VARIANT)"
 
 %description
 PHP's database access functions are not standardised. This creates a
