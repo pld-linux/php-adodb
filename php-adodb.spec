@@ -42,7 +42,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/{contrib,drivers,datadict,tests,perf,lang,session,xsl}
 
 cp -af {*.php,*.dtd,*.zip,pear/Auth,contrib,drivers,datadict,tests,lang,perf,session,xsl} \
-    $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
+	$RPM_BUILD_ROOT%{php_pear_dir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
