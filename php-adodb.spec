@@ -1,14 +1,14 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	4.52
+Version:	4.53
 %define ver	%(echo %{version} | tr -d .)
 Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
 #Source0Download: http://php.weblogs.com/ADOdb#downloads
 Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}.tgz
-# Source0-md5:	875b59c3bb4d459d5ce662f9b262389e
+# Source0-md5:	2c2a5231543dc9129289576c04107c16
 URL:		http://adodb.sourceforge.net/
 Requires:	php-pear >= 4.0.5
 BuildArch:	noarch
@@ -39,19 +39,15 @@ Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/{drivers,datadict,tests,perf,lang}
+install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/{contrib,drivers,datadict,tests,perf,lang,session,xsl}
 
-install *.php      $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
-install drivers/*  $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/drivers
-install datadict/* $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/datadict
-install tests/*    $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/tests
-install lang/*     $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/lang
-install perf/*     $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/perf
+cp -af {*.php,*.dtd,*.zip,pear/Auth,contrib,drivers,datadict,tests,lang,perf,session,xsl} \
+    $RPM_BUILD_ROOT%{php_pear_dir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.txt docs/ cute_icons_for_site
+%doc *.txt docs/ cute_icons_for_site pear/*.txt
 %{php_pear_dir}/%{name}
