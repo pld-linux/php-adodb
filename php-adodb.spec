@@ -2,20 +2,19 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	3.50
+Version:	3.60
 %define ver	%(echo %{version} | tr -d .)
 Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
-# Source0-md5:	258037070b2203c4feb858c6d9f18446
 Source0:	http://phplens.com/lens/dl/%{name}%{ver}.tgz
+# Source0-md5:	de0a307347b4fa90b56d58b871038948
 URL:		http://php.weblogs.com/ADOdb
 Requires:	php
 Requires:	php-pear
 BuildRequires:	rpm-php-pearprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-%define		php_pear_dir	/usr/share/pear
 %define		_noautoreq	"pear(ADORecordSet_ibase) pear(ADORecordSet_empty) pear(ADOConnection) pear(ADOFetchObj) pear(ADOFieldObject) pear(ADORecordSet) pear(ADORecordSet_array) pear(ADORecordSet_empty)pear(ADORecordSet_ibase) pear(ADORecordset) pear(COM) pear(VARIANT)"
 
 %description
