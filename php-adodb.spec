@@ -2,11 +2,11 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	%{ver}
+Version:	1.20
 Release:	1
 Group:		Libraries
 License:	LGPL
-Source0:	http://phplens.com/lens/dl/%{name}%(echo %{ver} | sed -e 's#\.##').tgz
+Source0:	http://phplens.com/lens/dl/%{name}%(echo %{version} | sed -e 's#\.##').tgz
 URL:		http://php.weblogs.com/ADODB/
 Requires:	php-common
 BuildArch:	noarch
@@ -31,7 +31,6 @@ zmieniaæ bazy.
 
 Aktualnie wspiera MySQL, Interbase, Oracle, Microsoft SQL Server,
 Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
-
 
 %prep
 %setup  -q -n %{name}
