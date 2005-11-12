@@ -1,14 +1,14 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	4.64
+Version:	4.66
 %define ver	%(echo %{version} | tr -d .)
 Release:	1
 Group:		Libraries
 License:	dual licensed using BSD-Style and LGPL
 #Source0Download: http://php.weblogs.com/ADOdb#downloads
 Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}.tgz
-# Source0-md5:	8d87f56de744929c9c49ba82e0c84b8e
+# Source0-md5:	169a65370fd7fc69666ca41bbaa549a2
 URL:		http://adodb.sourceforge.net/
 Requires:	php-pear >= 4.0.5
 BuildArch:	noarch
@@ -41,7 +41,7 @@ Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{name}/{contrib,drivers,datadict,tests,perf,lang,session,xsl}
 
-cp -af *.php *.dtd *.zip pear/Auth contrib drivers datadict tests lang perf session xsl \
+cp -af *.php *.dtd pear/Auth contrib drivers datadict tests lang perf session xsl \
 	$RPM_BUILD_ROOT%{php_pear_dir}/%{name}
 
 %clean
