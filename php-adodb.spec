@@ -17,12 +17,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		php_pear_dir	%{_datadir}/pear
 
 %description
-PHP's database access functions are not standardised. This creates a
+PHP's database access functions are not standardized. This creates a
 need for a database class library to hide the differences between the
 different databases (encapsulate the differences) so we can easily
 switch databases.
 
-Is currently support MySQL, Interbase, Oracle, Microsoft SQL Server,
+It currently supports MySQL, Interbase, Oracle, Microsoft SQL Server,
 Sybase, PostgreSQL, Foxpro, Access, ADO and ODBC.
 
 %description -l pl
