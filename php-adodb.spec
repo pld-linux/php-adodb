@@ -36,11 +36,12 @@ powoduje i¿ potrzebna jest biblioteka dostarczaj±ca jednolite funkcje
 ukrywaj±ca ró¿nice pomiêdzy ró¿nymi bazami dziêki czemu ³atwo mo¿na
 zmieniaæ bazy.
 
-Aktualnie wspiera MySQL, Interbase, Oracle, Microsoft SQL Server,
+Aktualnie obs³uguje MySQL, Interbase, Oracle, Microsoft SQL Server,
 Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 
 %package -n php-pear-Auth_Container_ADOdb
 Summary:	ADOdb container for PEAR Auth
+Summary(pl):	Kontener ADOdb dla PEAR Auth
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-pear
@@ -51,10 +52,18 @@ Storage driver for fetching login data from a database using
 ADOdb-PHP.
 
 This storage driver can use all databases which are supported by the
-ADBdb DB abstraction layer to fetch login data.
+ADOdb DB abstraction layer to fetch login data.
+
+%description -n php-pear-Auth_Container_ADOdb -l pl
+Sterownik przechowywania danych do pobierania danych logowania z bazy
+danych przy u¿yciu ADOdb-PHP.
+
+Ten sterownik przechowywania danych mo¿e u¿ywaæ wszystkich baz danych
+obs³ugiwanych przez warstwê abstrakcji ADOdb DB do pobierania danych.
 
 %package pear
-Summary:	PEAR DB Emulation Layer for ADODB.
+Summary:	PEAR DB Emulation Layer for ADOdb
+Summary(pl):	Warstwa emulacji PEAR DB dla ADOdb
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 Requires:	php-pear
@@ -62,16 +71,20 @@ Requires:	php-pear
 %description pear
 PEAR DB Emulation Layer for ADODB.
 
+%description pear -l pl
+Warstwa emulacji PEAR DB dla ADOdb.
+
 %package tests
-Summary:	Tests for ADODB
+Summary:	Tests for ADOdb
+Summary(pl):	Testy dla ADOdb
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description tests
-Tests for ADODB.
+Tests for ADOdb.
 
 %description tests -l pl
-Testy dla ADODB.
+Testy dla ADOdb.
 
 %prep
 %setup -q -n %{name}
