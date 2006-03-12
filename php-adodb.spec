@@ -4,7 +4,7 @@ Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
 Version:	4.67
-Release:	2
+Release:	3
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}.tgz
