@@ -1,0 +1,3 @@
+- version: 2.20
+- changed license to dual licensed using BSD-Style and LGPL
+- clean-ups in %doc
