@@ -7,7 +7,6 @@ Version:	4.67
 Release:	1.17
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
-# Source0Download: http://php.weblogs.com/ADOdb#downloads
 Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}.tgz
 # Source0-md5:	679d4fac06126707f4bf636508e9ec8a
 Patch0:		%{name}-paths.patch
