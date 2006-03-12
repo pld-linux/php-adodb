@@ -1,0 +1,65 @@
+unchanged:
+--- adodb-4.67/adodb.inc.php~	2006-03-12 18:15:54.000000000 +0200
++++ adodb/adodb.inc.php	2006-03-12 18:26:52.000000000 +0200
+@@ -44,7 +44,7 @@
+ 	 * Set ADODB_DIR to the directory where this file resides...
+ 	 * This constant was formerly called $ADODB_RootPath
+ 	 */
+-	if (!defined('ADODB_DIR')) define('ADODB_DIR',dirname(__FILE__));
++	if (!defined('ADODB_DIR')) define('ADODB_DIR','/usr/share/php/adodb');
+ 	
+ 	//==============================================================================================	
+ 	// GLOBAL VARIABLES
+--- ./pear/Auth/Container/ADOdb.php	2006-03-12 17:42:27.000000000 +0200
++++ /usr/share/pear/Auth/Container/ADOdb.php	2006-03-12 18:34:11.000000000 +0200
+@@ -21,9 +21,13 @@
+ //
+ 
+ require_once 'Auth/Container.php';
+-require_once 'adodb.inc.php';
+-require_once 'adodb-pear.inc.php';
+-require_once 'adodb-errorpear.inc.php';
++
++if (!defined('ADODB_DIR')) {
++	define('ADODB_DIR', '/usr/share/php/adodb');
++}
++require_once ADODB_DIR . '/adodb.inc.php';
++require_once ADODB_DIR . '/adodb-pear.inc.php';
++require_once ADODB_DIR . '/adodb-errorpear.inc.php';
+ 
+ /**
+  * Storage driver for fetching login data from a database using ADOdb-PHP.
+@@ -404,12 +406,2 @@
+ }
+-
+-function showDbg( $string ) {
+-	print "
+--- $string</P>";
+-}
+-function dump( $var, $str, $vardump = false ) {
+-	print "<H4>$str</H4><pre>";
+-	( !$vardump ) ? ( print_r( $var )) : ( var_dump( $var ));
+-	print "</pre>";
+-}
+ ?>
+unchanged:
+--- adodb/adodb-pear.inc.php	2006-03-12 18:07:56.000000000 +0200
++++ /usr/share/php/adodb/adodb-pear.inc.php	2006-03-12 18:32:20.000000000 +0200
+@@ -43,10 +43,13 @@
+ 	free
+  */
+  
+-define('ADODB_PEAR',dirname(__FILE__));
+-include_once "PEAR.php";
+-include_once ADODB_PEAR."/adodb-errorpear.inc.php";
+-include_once ADODB_PEAR."/adodb.inc.php";
++include_once 'PEAR.php';
++
++if (!defined('ADODB_DIR')) {
++	define('ADODB_DIR', '/usr/share/php/adodb');
++}
++include_once ADODB_DIR . '/adodb-errorpear.inc.php';
++include_once ADODB_DIR . '/adodb.inc.php';
+ 
+ if (!defined('DB_OK')) {
+ define("DB_OK",	1);
