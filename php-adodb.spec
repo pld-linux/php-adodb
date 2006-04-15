@@ -3,12 +3,12 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
 Name:		adodb
-Version:	4.67
-Release:	3
+Version:	4.80
+Release:	1
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}.tgz
-# Source0-md5:	679d4fac06126707f4bf636508e9ec8a
+# Source0-md5:	942164adfc953173205231b9522304e0
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -126,6 +126,7 @@ EOF
 %{_appdir}/server.php
 %{_appdir}/session
 %{_appdir}/xmlschema.dtd
+%{_appdir}/xmlschema03.dtd
 %{_appdir}/xsl
 
 %{_appdir}/adodb-csvlib.inc.php
@@ -143,6 +144,8 @@ EOF
 %{_appdir}/adodb.inc.php
 %{_appdir}/toexport.inc.php
 %{_appdir}/tohtml.inc.php
+%{_appdir}/adodb-active-record.inc.php
+%{_appdir}/adodb-xmlschema03.inc.php
 
 %files tests
 %defattr(644,root,root,755)
