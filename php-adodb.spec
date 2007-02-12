@@ -1,7 +1,7 @@
 %include	/usr/lib/rpm/macros.php
 %define ver	%(echo %{version} | tr -d .)
 Summary:	Unique interface to access different SQL databases
-Summary(pl):	Jednolity inferfejs dostêpu do baz danych SQL
+Summary(pl.UTF-8):   Jednolity inferfejs dostÄ™pu do baz danych SQL
 Name:		adodb
 Version:	4.80
 Release:	1
@@ -30,18 +30,18 @@ switch databases.
 It currently supports MySQL, Interbase, Oracle, Microsoft SQL Server,
 Sybase, PostgreSQL, Foxpro, Access, ADO and ODBC.
 
-%description -l pl
-Funkcje dostêpu do baz danych w PHP nie s± ustandaryzowane. To
-powoduje i¿ potrzebna jest biblioteka dostarczaj±ca jednolite funkcje
-ukrywaj±ca ró¿nice pomiêdzy ró¿nymi bazami dziêki czemu ³atwo mo¿na
-zmieniaæ bazy.
+%description -l pl.UTF-8
+Funkcje dostÄ™pu do baz danych w PHP nie sÄ… ustandaryzowane. To
+powoduje iÅ¼ potrzebna jest biblioteka dostarczajÄ…ca jednolite funkcje
+ukrywajÄ…ca rÃ³Å¼nice pomiÄ™dzy rÃ³Å¼nymi bazami dziÄ™ki czemu Å‚atwo moÅ¼na
+zmieniaÄ‡ bazy.
 
-Aktualnie obs³uguje MySQL, Interbase, Oracle, Microsoft SQL Server,
+Aktualnie obsÅ‚uguje MySQL, Interbase, Oracle, Microsoft SQL Server,
 Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 
 %package -n php-pear-Auth_Container_ADOdb
 Summary:	ADOdb container for PEAR Auth
-Summary(pl):	Kontener ADOdb dla PEAR Auth
+Summary(pl.UTF-8):   Kontener ADOdb dla PEAR Auth
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-pear
@@ -54,16 +54,16 @@ ADOdb-PHP.
 This storage driver can use all databases which are supported by the
 ADOdb DB abstraction layer to fetch login data.
 
-%description -n php-pear-Auth_Container_ADOdb -l pl
+%description -n php-pear-Auth_Container_ADOdb -l pl.UTF-8
 Sterownik przechowywania danych do pobierania danych logowania z bazy
-danych przy u¿yciu ADOdb-PHP.
+danych przy uÅ¼yciu ADOdb-PHP.
 
-Ten sterownik przechowywania danych mo¿e u¿ywaæ wszystkich baz danych
-obs³ugiwanych przez warstwê abstrakcji ADOdb DB do pobierania danych.
+Ten sterownik przechowywania danych moÅ¼e uÅ¼ywaÄ‡ wszystkich baz danych
+obsÅ‚ugiwanych przez warstwÄ™ abstrakcji ADOdb DB do pobierania danych.
 
 %package pear
 Summary:	PEAR DB Emulation Layer for ADOdb
-Summary(pl):	Warstwa emulacji PEAR DB dla ADOdb
+Summary(pl.UTF-8):   Warstwa emulacji PEAR DB dla ADOdb
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 Requires:	php-pear
@@ -71,19 +71,19 @@ Requires:	php-pear
 %description pear
 PEAR DB Emulation Layer for ADODB.
 
-%description pear -l pl
+%description pear -l pl.UTF-8
 Warstwa emulacji PEAR DB dla ADOdb.
 
 %package tests
 Summary:	Tests for ADOdb
-Summary(pl):	Testy dla ADOdb
+Summary(pl.UTF-8):   Testy dla ADOdb
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description tests
 Tests for ADOdb.
 
-%description tests -l pl
+%description tests -l pl.UTF-8
 Testy dla ADOdb.
 
 %prep
