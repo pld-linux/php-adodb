@@ -1,7 +1,7 @@
 %include	/usr/lib/rpm/macros.php
 %define ver	%(echo %{version} | tr -d .)
 Summary:	Unique interface to access different SQL databases
-Summary(pl.UTF-8):   Jednolity inferfejs dostępu do baz danych SQL
+Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		adodb
 Version:	4.80
 Release:	1
@@ -41,7 +41,7 @@ Sybase, PostgreSQL, Foxpro, Access, ADO i ODBC.
 
 %package -n php-pear-Auth_Container_ADOdb
 Summary:	ADOdb container for PEAR Auth
-Summary(pl.UTF-8):   Kontener ADOdb dla PEAR Auth
+Summary(pl.UTF-8):	Kontener ADOdb dla PEAR Auth
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{name}-pear
@@ -63,7 +63,7 @@ obsługiwanych przez warstwę abstrakcji ADOdb DB do pobierania danych.
 
 %package pear
 Summary:	PEAR DB Emulation Layer for ADOdb
-Summary(pl.UTF-8):   Warstwa emulacji PEAR DB dla ADOdb
+Summary(pl.UTF-8):	Warstwa emulacji PEAR DB dla ADOdb
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 Requires:	php-pear
@@ -76,7 +76,7 @@ Warstwa emulacji PEAR DB dla ADOdb.
 
 %package tests
 Summary:	Tests for ADOdb
-Summary(pl.UTF-8):   Testy dla ADOdb
+Summary(pl.UTF-8):	Testy dla ADOdb
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
