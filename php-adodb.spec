@@ -1,14 +1,15 @@
 %include	/usr/lib/rpm/macros.php
 %define ver	%(echo %{version} | tr -d .)
+%define	_postrel	a
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		adodb
-Version:	4.80
-Release:	1
+Version:	4.96
+Release:	%{_postrel}.0.1
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}.tgz
-# Source0-md5:	942164adfc953173205231b9522304e0
+Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}%{_postrel}.tgz
+# Source0-md5:	9aebb0e04d8e67493c0e70fc75c9fc43
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -146,6 +147,7 @@ EOF
 %{_appdir}/tohtml.inc.php
 %{_appdir}/adodb-active-record.inc.php
 %{_appdir}/adodb-xmlschema03.inc.php
+%{_appdir}/adodb-memcache.lib.inc.php
 
 %files tests
 %defattr(644,root,root,755)
