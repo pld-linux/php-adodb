@@ -1,3 +1,6 @@
+#
+%bcond_without	pear	# Don't build pear-dependent packages.
+
 %include	/usr/lib/rpm/macros.php
 %define ver	%(echo %{version} | tr -d .)
 %define	_postrel	a
@@ -149,6 +152,7 @@ EOF
 %{_appdir}/adodb-xmlschema03.inc.php
 %{_appdir}/adodb-memcache.lib.inc.php
 
+%if %{with pear}
 %files tests
 %defattr(644,root,root,755)
 %{_appdir}/tests
@@ -164,3 +168,4 @@ EOF
 %defattr(644,root,root,755)
 %doc pear/README
 %{php_pear_dir}/Auth/Container/ADOdb.php
+%endif
