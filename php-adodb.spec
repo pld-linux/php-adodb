@@ -1,17 +1,20 @@
+# TODO
+# - rename to php-adodb
 #
 %bcond_without	pear	# Don't build pear-dependent packages.
 
 %include	/usr/lib/rpm/macros.php
-%define ver	%(echo %{version} | tr -d .)
-%define	_postrel	a
+%define		ver	%(echo %{version} | tr -d .)
+%define		subver	a
+%define		rel		0.1
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		adodb
 Version:	4.96
-Release:	%{_postrel}.0.1
+Release:	%{subver}.%{rel}
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}%{_postrel}.tgz
+Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}%{subver}.tgz
 # Source0-md5:	9aebb0e04d8e67493c0e70fc75c9fc43
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
@@ -106,8 +109,10 @@ install -d $RPM_BUILD_ROOT%{_appdir}/{drivers,datadict,perf,lang,session,xsl}
 cp -a *.php *.dtd drivers datadict tests lang perf session xsl \
 	$RPM_BUILD_ROOT%{_appdir}
 
+%if %{with pear}
 install -d $RPM_BUILD_ROOT%{php_pear_dir}/Auth/Container
 cp -a pear/Auth/Container/ADOdb.php $RPM_BUILD_ROOT%{php_pear_dir}/Auth/Container
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
