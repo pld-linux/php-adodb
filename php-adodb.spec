@@ -3,9 +3,10 @@
 %bcond_without	pear	# Don't build pear-dependent packages.
 
 %include	/usr/lib/rpm/macros.php
-%define		ver	%(echo %{version} | tr -d .)
+%define		ver		%(echo %{version} | tr -d .)
 %define		subver	a
 %define		rel		0.1
+%define		php_min_version 5.2.0
 %define		pkgname	adodb
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
@@ -14,12 +15,22 @@ Version:	4.96
 Release:	%{subver}.%{rel}
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/adodb/%{pkgname}%{ver}%{subver}.tgz
+Source0:	http://downloads.sourceforge.net/adodb/%{pkgname}%{ver}%{subver}.tgz
 # Source0-md5:	9aebb0e04d8e67493c0e70fc75c9fc43
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
-Requires:	php-common
+Requires:	php-common >= 4:%{php_min_version}
+Requires:	php-date
+Requires:	php-pcre
+Requires:	php-session
+Requires:	php-xml
+Suggests:	php-mysql
+Suggests:	php-mysqli
+Suggests:	php-pgsql
+Suggests:	php-sqlite
+Provides:	adodb = %{version}-%{release}
+Obsoletes:	adodb
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
