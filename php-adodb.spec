@@ -1,20 +1,20 @@
-# TODO
-# - rename to php-adodb
 #
+# Conditional build:
 %bcond_without	pear	# Don't build pear-dependent packages.
 
 %include	/usr/lib/rpm/macros.php
 %define		ver	%(echo %{version} | tr -d .)
 %define		subver	a
 %define		rel		0.1
+%define		pkgname	adodb
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
-Name:		adodb
+Name:		php-%{pkgname}
 Version:	4.96
 Release:	%{subver}.%{rel}
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/adodb/%{name}%{ver}%{subver}.tgz
+Source0:	http://dl.sourceforge.net/adodb/%{pkgname}%{ver}%{subver}.tgz
 # Source0-md5:	9aebb0e04d8e67493c0e70fc75c9fc43
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
@@ -23,10 +23,10 @@ Requires:	php-common
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_noautoreq 'pear(\.\./.*)' 'pear(adodb.*)' 'pear(test.*)' 'pear(.*.inc.php)'
-%define		_noautoprov 'pear(adodb/.*)'
+%define		_appdir		%{php_data_dir}/%{pkgname}
 
-%define		_appdir		%{_datadir}/php/%{name}
+%define		_noautoreq pear(\.\./.*) pear(adodb.*) pear(test.*) pear(.*.inc.php)
+%define		_noautoprov pear(adodb/.*)
 
 %description
 PHP's database access functions are not standardized. This creates a
@@ -94,7 +94,7 @@ Tests for ADOdb.
 Testy dla ADOdb.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{pkgname}
 # undos the source
 find . -type f -print0 | xargs -0 sed -i -e 's,\r$,,'
 
