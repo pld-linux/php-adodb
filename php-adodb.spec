@@ -1,33 +1,34 @@
+# TODO
+# - session subpkg, perf, subpkg for others
+# - %lang
 #
 # Conditional build:
 %bcond_without	pear	# Don't build pear-dependent packages.
 
 %include	/usr/lib/rpm/macros.php
 %define		ver		%(echo %{version} | tr -d .)
-%define		subver	a
-%define		rel		0.1
-%define		php_min_version 5.2.0
+%define		php_min_version 5.0.0
 %define		pkgname	adodb
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
-Version:	4.96
-Release:	%{subver}.%{rel}
+Version:	5.10
+Release:	0.1
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/adodb/%{pkgname}%{ver}%{subver}.tgz
-# Source0-md5:	9aebb0e04d8e67493c0e70fc75c9fc43
+Source0:	http://downloads.sourceforge.net/project/adodb/adodb-php5-only/adodb-%{ver}-for-php5/adodb%{ver}.tgz
+# Source0-md5:	5d4556a9b39df98cd6c31fd5a91a5af6
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-common >= 4:%{php_min_version}
 Requires:	php-date
 Requires:	php-pcre
-Requires:	php-session
 Requires:	php-xml
 Suggests:	php-mysql
 Suggests:	php-mysqli
 Suggests:	php-pgsql
+Suggests:	php-session
 Suggests:	php-sqlite
 Provides:	adodb = %{version}-%{release}
 Obsoletes:	adodb
@@ -105,13 +106,15 @@ Tests for ADOdb.
 Testy dla ADOdb.
 
 %prep
-%setup -q -n %{pkgname}
+%setup -qc
+mv %{pkgname}5/* .
 # undos the source
 find . -type f -print0 | xargs -0 sed -i -e 's,\r$,,'
 
 %patch0 -p1
 mv pear/{readme.Auth.txt,README}
 rm -rf session/old
+rm adodb-php4.inc.php
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -138,6 +141,7 @@ EOF
 
 %files
 %defattr(644,root,root,755)
+%doc readme.txt license.txt
 %dir %{_appdir}
 %{_appdir}/datadict
 %{_appdir}/drivers
@@ -167,6 +171,7 @@ EOF
 %{_appdir}/adodb-active-record.inc.php
 %{_appdir}/adodb-xmlschema03.inc.php
 %{_appdir}/adodb-memcache.lib.inc.php
+%{_appdir}/adodb-active-recordx.inc.php
 
 %if %{with pear}
 %files tests
