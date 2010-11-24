@@ -13,7 +13,7 @@ Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
 Version:	5.10
-Release:	0.1
+Release:	1
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/project/adodb/adodb-php5-only/adodb-%{ver}-for-php5/adodb%{ver}.tgz
