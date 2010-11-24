@@ -12,12 +12,12 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
-Version:	5.10
+Version:	5.11
 Release:	1
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/project/adodb/adodb-php5-only/adodb-%{ver}-for-php5/adodb%{ver}.tgz
-# Source0-md5:	5d4556a9b39df98cd6c31fd5a91a5af6
+# Source0-md5:	cacb00b066fee3c2dbf4bdc09e20c503
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -113,8 +113,8 @@ find . -type f -print0 | xargs -0 sed -i -e 's,\r$,,'
 
 %patch0 -p1
 mv pear/{readme.Auth.txt,README}
-rm -rf session/old
-rm adodb-php4.inc.php
+%{__rm} -r session/old
+%{__rm} adodb-php4.inc.php
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -162,7 +162,6 @@ EOF
 %{_appdir}/adodb-lib.inc.php
 %{_appdir}/adodb-pager.inc.php
 %{_appdir}/adodb-perf.inc.php
-%{_appdir}/adodb-php4.inc.php
 %{_appdir}/adodb-time.inc.php
 %{_appdir}/adodb-xmlschema.inc.php
 %{_appdir}/adodb.inc.php
