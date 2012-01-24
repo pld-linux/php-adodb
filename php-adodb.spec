@@ -1,14 +1,14 @@
 # TODO
-# - session subpkg, perf, subpkg for others
+# - session subpkg, perf, xmlschema, subpkg for others
 # - %lang
 #
 # Conditional build:
 %bcond_without	pear	# Don't build pear-dependent packages.
 
-%include	/usr/lib/rpm/macros.php
 %define		ver		%(echo %{version} | tr -d .)
-%define		php_min_version 5.0.0
 %define		pkgname	adodb
+%define		php_min_version 5.2.0
+%include	/usr/lib/rpm/macros.php
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
@@ -16,11 +16,12 @@ Version:	5.15
 Release:	1
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/project/adodb/adodb-php5-only/adodb-%{ver}-for-php5/adodb%{ver}.tgz
+Source0:	http://downloads.sourceforge.net/adodb/adodb%{ver}.tgz
 # Source0-md5:	47bcd99a38145b5a7012f9bc8d2bf8be
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
+BuildRequires:	rpmbuild(macros) >= 1.553
 Requires:	php-common >= 4:%{php_min_version}
 Requires:	php-date
 Requires:	php-pcre
@@ -30,6 +31,8 @@ Suggests:	php-mysqli
 Suggests:	php-pgsql
 Suggests:	php-session
 Suggests:	php-sqlite
+# gives some performance
+Suggests:	php-pecl-adodb
 Provides:	adodb = %{version}-%{release}
 Obsoletes:	adodb
 BuildArch:	noarch
@@ -108,13 +111,14 @@ Testy dla ADOdb.
 %prep
 %setup -qc
 mv %{pkgname}5/* .
-# undos the source
-find . -type f -print0 | xargs -0 sed -i -e 's,\r$,,'
+%undos -f php
 
 %patch0 -p1
 mv pear/{readme.Auth.txt,README}
 %{__rm} -r session/old
 %{__rm} adodb-php4.inc.php
+
+%{__sed} -i -e '4s/en/sv/' lang/adodb-sv.inc.php
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -125,7 +129,7 @@ cp -a *.php *.dtd drivers datadict tests lang perf session xsl \
 
 %if %{with pear}
 install -d $RPM_BUILD_ROOT%{php_pear_dir}/Auth/Container
-cp -a pear/Auth/Container/ADOdb.php $RPM_BUILD_ROOT%{php_pear_dir}/Auth/Container
+cp -p pear/Auth/Container/ADOdb.php $RPM_BUILD_ROOT%{php_pear_dir}/Auth/Container
 %endif
 
 %clean
@@ -145,13 +149,8 @@ EOF
 %dir %{_appdir}
 %{_appdir}/datadict
 %{_appdir}/drivers
-%{_appdir}/lang
-%{_appdir}/perf
+%dir %{_appdir}/lang
 %{_appdir}/server.php
-%{_appdir}/session
-%{_appdir}/xmlschema.dtd
-%{_appdir}/xmlschema03.dtd
-%{_appdir}/xsl
 
 %{_appdir}/adodb-csvlib.inc.php
 %{_appdir}/adodb-datadict.inc.php
@@ -161,16 +160,51 @@ EOF
 %{_appdir}/adodb-iterator.inc.php
 %{_appdir}/adodb-lib.inc.php
 %{_appdir}/adodb-pager.inc.php
-%{_appdir}/adodb-perf.inc.php
 %{_appdir}/adodb-time.inc.php
-%{_appdir}/adodb-xmlschema.inc.php
 %{_appdir}/adodb.inc.php
 %{_appdir}/toexport.inc.php
 %{_appdir}/tohtml.inc.php
-%{_appdir}/adodb-active-record.inc.php
-%{_appdir}/adodb-xmlschema03.inc.php
 %{_appdir}/adodb-memcache.lib.inc.php
+%{_appdir}/adodb-active-record.inc.php
 %{_appdir}/adodb-active-recordx.inc.php
+
+%{_appdir}/lang/adodb-en.inc.php
+%lang(ar) %{_appdir}/lang/adodb-ar.inc.php
+%lang(bg) %{_appdir}/lang/adodb-bg.inc.php
+%lang(bg) %{_appdir}/lang/adodb-bgutf8.inc.php
+%lang(ca) %{_appdir}/lang/adodb-ca.inc.php
+%lang(zh_CN) %{_appdir}/lang/adodb-cn.inc.php
+%lang(cs) %{_appdir}/lang/adodb-cz.inc.php
+%lang(da) %{_appdir}/lang/adodb-da.inc.php
+%lang(de) %{_appdir}/lang/adodb-de.inc.php
+%lang(es) %{_appdir}/lang/adodb-es.inc.php
+%lang(eo) %{_appdir}/lang/adodb-esperanto.inc.php
+%lang(fa) %{_appdir}/lang/adodb-fa.inc.php
+%lang(fr) %{_appdir}/lang/adodb-fr.inc.php
+%lang(hu) %{_appdir}/lang/adodb-hu.inc.php
+%lang(it) %{_appdir}/lang/adodb-it.inc.php
+%lang(nl) %{_appdir}/lang/adodb-nl.inc.php
+%lang(pl) %{_appdir}/lang/adodb-pl.inc.php
+%lang(pt_BR) %{_appdir}/lang/adodb-pt-br.inc.php
+%lang(ro) %{_appdir}/lang/adodb-ro.inc.php
+%lang(ru) %{_appdir}/lang/adodb-ru1251.inc.php
+%lang(sv) %{_appdir}/lang/adodb-sv.inc.php
+%lang(uk) %{_appdir}/lang/adodb-uk1251.inc.php
+%lang(th) %{_appdir}/lang/adodb_th.inc.php
+
+# - perf
+%{_appdir}/adodb-perf.inc.php
+%{_appdir}/perf
+
+# - session
+%{_appdir}/session
+
+# - xmlschema, http://adodb-xmlschema.sourceforge.net/docs/index.html
+%{_appdir}/xmlschema.dtd
+%{_appdir}/xmlschema03.dtd
+%{_appdir}/adodb-xmlschema.inc.php
+%{_appdir}/adodb-xmlschema03.inc.php
+%{_appdir}/xsl
 
 %if %{with pear}
 %files tests
