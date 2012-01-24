@@ -12,12 +12,12 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
-Version:	5.11
+Version:	5.15
 Release:	1
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/project/adodb/adodb-php5-only/adodb-%{ver}-for-php5/adodb%{ver}.tgz
-# Source0-md5:	cacb00b066fee3c2dbf4bdc09e20c503
+# Source0-md5:	47bcd99a38145b5a7012f9bc8d2bf8be
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
