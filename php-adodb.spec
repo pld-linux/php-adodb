@@ -13,7 +13,7 @@ Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
 Version:	5.15
-Release:	1
+Release:	2
 License:	dual licensed using BSD-Style and LGPL
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/adodb/adodb%{ver}.tgz
@@ -22,10 +22,10 @@ Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.553
+Requires:	php(pcre)
+Requires:	php(xml)
 Requires:	php-common >= 4:%{php_min_version}
 Requires:	php-date
-Requires:	php-pcre
-Requires:	php-xml
 Suggests:	php-mysql
 Suggests:	php-mysqli
 Suggests:	php-pgsql
