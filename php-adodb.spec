@@ -12,20 +12,20 @@
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
-Version:	5.15
-Release:	3
-License:	dual licensed using BSD-Style and LGPL
+Version:	5.18a
+Release:	1
+License:	BSD-Style and LGPL
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/adodb/adodb%{ver}.tgz
-# Source0-md5:	47bcd99a38145b5a7012f9bc8d2bf8be
+# Source0-md5:	88d4112868d7c2c9aebcb08587d9bb5c
 Patch0:		%{name}-paths.patch
 URL:		http://adodb.sourceforge.net/
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
-BuildRequires:	rpmbuild(macros) >= 1.553
+BuildRequires:	rpmbuild(macros) >= 1.654
 Requires:	php(core) >= %{php_min_version}
+Requires:	php(date)
 Requires:	php(pcre)
 Requires:	php(xml)
-Requires:	php-date
 Suggests:	php-mysql
 Suggests:	php-mysqli
 Suggests:	php-pgsql
@@ -39,9 +39,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_appdir		%{php_data_dir}/%{pkgname}
-
-%define		_noautoreq pear(\.\./.*) pear(adodb.*) pear(test.*) pear(.*.inc.php)
-%define		_noautoprov pear(adodb/.*)
+%define		_noautoreq_pear \.\./.* adodb.* test.*
 
 %description
 PHP's database access functions are not standardized. This creates a
@@ -111,7 +109,7 @@ Testy dla ADOdb.
 %prep
 %setup -qc
 mv %{pkgname}5/* .
-%undos -f php
+%undos -f php,txt
 
 %patch0 -p1
 mv pear/{readme.Auth.txt,README}
