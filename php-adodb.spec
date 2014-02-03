@@ -7,13 +7,13 @@
 
 %define		ver		%(echo %{version} | tr -d .)
 %define		pkgname	adodb
-%define		php_min_version 5.2.0
+%define		php_min_version 5.2.3
 %include	/usr/lib/rpm/macros.php
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
 Version:	5.18a
-Release:	1
+Release:	2
 License:	BSD-Style and LGPL
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/adodb/adodb%{ver}.tgz
@@ -40,6 +40,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_appdir		%{php_data_dir}/%{pkgname}
 %define		_noautoreq_pear \.\./.* adodb.* test.*
+
+# optional
+%define		_noautophp	php-sqlite php-pgsql php-mysql php-mysqli php-session
+
+%define		_noautoreq	%{?_noautophp}
 
 %description
 PHP's database access functions are not standardized. This creates a
