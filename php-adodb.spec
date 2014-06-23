@@ -26,13 +26,13 @@ Requires:	php(core) >= %{php_min_version}
 Requires:	php(date)
 Requires:	php(pcre)
 Requires:	php(xml)
-Suggests:	php-mysql
-Suggests:	php-mysqli
-Suggests:	php-pgsql
-Suggests:	php-session
-Suggests:	php-sqlite
+Suggests:	php(mysql)
+Suggests:	php(mysqli)
+Suggests:	php(pgsql)
+Suggests:	php(session)
+Suggests:	php(sqlite)
 # gives some performance
-Suggests:	php-pecl-adodb
+Suggests:	php(adodb)
 Provides:	adodb = %{version}-%{release}
 Obsoletes:	adodb
 BuildArch:	noarch
