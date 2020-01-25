@@ -8,7 +8,6 @@
 %define		ver		%(echo %{version} | tr -d .)
 %define		pkgname	adodb
 %define		php_min_version 5.2.3
-%include	/usr/lib/rpm/macros.php
 Summary:	Unique interface to access different SQL databases
 Summary(pl.UTF-8):	Jednolity inferfejs dostępu do baz danych SQL
 Name:		php-%{pkgname}
