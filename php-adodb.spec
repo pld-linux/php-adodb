@@ -115,7 +115,7 @@ Testy dla ADOdb.
 mv %{pkgname}5/* .
 %undos -f php,txt
 
-%patch0 -p1
+%patch -P0 -p1
 mv pear/{readme.Auth.txt,README}
 %{__rm} -r session/old
 %{__rm} adodb-php4.inc.php
